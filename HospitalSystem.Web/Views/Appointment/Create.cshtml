@@ -1,0 +1,90 @@
+﻿@model HospitalSystem.Entities.Models.Appointment
+@{
+    ViewBag.Title = "Yeni Randevu Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="container" class="">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            @ViewBag.Title
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal tasi-form" id="signupForm" method="post" action="">
+                                    @using (Html.BeginForm("Create", "Appointment", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <h4><label class="label label-primary">Hastane Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Bölüm Listesi: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.DepartmanId, new SelectList(ViewBag.Departmans, "Id", "Name", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.DepartmanId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Doktor Listesi: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.DoctorId, new SelectList(ViewBag.Doctors, "Id", "NameSurname", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.DoctorId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Hasta Randevu Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Randevu Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Date" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Randevu Saati</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Time" type="text" required />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Hasta Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Adı-Soyadı</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Patient.NameSurname" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Kimlik No</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Patient.IdentityNo" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Doğum Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Patient.Birthdate" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button class="btn btn-primary" type="submit">Randevuyu Ekle</button>
+                                                <a href="~/Appointment/Index"><button class="btn btn-danger" type="button">İptal Et</button></a>
+                                            </div>
+                                        </div>
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

@@ -1,0 +1,37 @@
+﻿@model HospitalSystem.Entities.Models.Doctor
+@{
+    ViewBag.Title = "Doktor Detay Bilgisi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="container" class="">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            @ViewBag.Title || <a href="~/Doctor/Index" class="btn btn-primary">Doktor Listesi</a> || <a href="~/Doctor/Delete/@Model.Id" class="btn btn-danger">Doktoru Sil</a>
+                        </header>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Kat Numarası</th>
+                                    <th>Oda Numarası</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>@Model.Floor.FloorNumber</td>
+                                    <td>@Model.Room.RoomNumber</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

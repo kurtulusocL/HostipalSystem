@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HospitalSystem.Entities.Models.Floor>
+@{
+    ViewBag.Title = "Hastane Kat Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        @ViewBag.Title || <a href="~/Floor/Create" class="btn btn-primary btn-xs">Yeni Kat Ekle</a>
+                    </header>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <table class="display table table-bordered table-striped" id="example">
+                                <thead>
+                                    <tr>
+                                        <th>Kat Numarası</th>
+                                        <th>Oda Sayısı</th>
+                                        <th>Doktor Sayısı</th>
+                                        <th>Eklenme Tarihi</th>
+                                        <th>Güncellenme Tarihi</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="gradeX">
+                                            <td>@item.FloorNumber</td>
+                                            <td>@item.Rooms.Count()</td>
+                                            <td>@item.Doctors.Count()</td>
+                                            <td>@item.CreatedDate.ToShortDateString()</td>
+                                            <td>
+                                                @if (item.UpdatedDate != null)
+                                                {
+                                                    @item.UpdatedDate.Value.ToShortDateString()
+                                                }
+                                                else
+                                                {
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="~/Floor/Edit/@item.Id" class="btn btn-success btn-xs">Güncelle</a>
+                                                <a href="~/Floor/Delete/@item.Id" class="btn btn-danger btn-xs">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Kat Numarası</th>
+                                        <th>Oda Sayısı</th>
+                                        <th>Doktor Sayısı</th>
+                                        <th>Eklenme Tarihi</th>
+                                        <th>Güncellenme Tarihi</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>

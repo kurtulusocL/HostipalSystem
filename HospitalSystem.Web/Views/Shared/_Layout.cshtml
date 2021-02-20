@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="~/img/Logo 3.png">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/Admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/Admin/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+    <link href="~/Content/Admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/Admin/css/owl.carousel.css" type="text/css">
+    <link href="~/Content/Admin/css/style.css" rel="stylesheet">
+    <link href="~/Content/Admin/css/style-responsive.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <section id="container">
+        <header class="header white-bg">
+            <div class="sidebar-toggle-box">
+                <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+            </div>
+            <a href="~/Admin/Index" class="logo">ocL<span> kurtulus</span></a>
+            <div class="nav notify-row" id="top_menu"></div>
+            <div class="top-nav ">
+                <ul class="nav pull-right top-menu">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="~/img/Logo 3.png" style="max-height:45px;min-height:45px;max-width:40px;min-width:40px;">
+                            <span class="username">@Session["KullanıcıAdıSoyadı"]</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li><a href="~/Account/Logout"><i class="icon-suitcase"></i> Oturumu Kapat</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="icon-user"></i>
+                            <span>İçerik İşlemleri</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="~/Departman/Index" target="_blank">Bölüm İşlemleri</a></li>
+                            <li><a href="~/Floor/Index" target="_blank">Kat İşlemleri</a></li>
+                            <li><a href="~/Room/Index" target="_blank">Doktor Oda İşlemleri</a></li>
+                            <li><a href="~/PatientRoom/Index" target="_blank">Hasta Oda İşlemleri</a></li>
+                            <li><a href="~/Gender/Index" target="_blank">Cinsiyet İşlemleri</a></li>
+                            <li><a href="~/Title/Index" target="_blank">Ünvan İşlemleri</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="icon-user"></i>
+                            <span>Onay İşlemleri</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="~/ConfirmList/AppointmentConfirmList" target="_blank">Randevu Onay</a></li>
+                            <li><a href="~/ConfirmList/DoctorConfirmList" target="_blank">Doktor Onay</a></li>
+                            <li><a href="~/ConfirmList/EmployeeConfirmList" target="_blank">Çalışan Onay</a></li>
+                            <li><a href="~/ConfirmList/NurseConfirmList" target="_blank">Hemşire Onay</a></li>
+                            <li><a href="~/ConfirmList/PatientConfirmList" target="_blank">Hasta Onay</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/Appointment/Index" target="_blank">
+                            <i class="icon-archive"></i>
+                            <span>Randevu İşlemleri </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Employee/Index" target="_blank">
+                            <i class="icon-archive"></i>
+                            <span>Çalışan İşlemleri </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Doctor/Index" target="_blank">
+                            <i class="icon-folder-close-alt"></i>
+                            <span>Doktor İşlemleri </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/Nurse/Index" target="_blank">
+                            <i class="icon-folder-close-alt"></i>
+                            <span>Hemşire İşlemleri </span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="">Admin İşlemleri</a>
+                        <ul class="sub">
+                            <li><a href="~/Admin/AdminList" target="_blank">Admin Listesi</a></li>
+                            <li><a href="~/Account/Register" target="_blank">Admin Kaydı</a></li>
+                            <li><a href="~/Account/RegisterAsistant" target="_blank">Asistan Admin Kaydı</a></li>
+                            <li><a href="~/Account/RegisterHelper" target="_blank">Yardımcı Admin Kaydı</a></li>
+                            <li><a href="~/Account/RegisterUser" target="_blank">Kullanıcı Kaydı</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        @RenderBody()
+        <footer class="site-footer">
+            <div class="text-center">
+                2019 - @DateTime.Now.Year &copy; kurtulusocaL.
+                <a href="#" class="go-top">
+                    <i class="icon-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+    </section>
+    <script type="text/javascript" language="javascript" src="~/Content/Adminassets/advanced-datatable/media/js/jquery.js"></script>
+    <script src="~/Content/Admin/js/jquery.js"></script>
+    <script src="~/Content/Admin/js/jquery-1.8.3.min.js"></script>
+    <script src="~/Content/Admin/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="~/Content/Admin/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Content/Admin/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Content/Admin/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/js/jquery.sparkline.js" type="text/javascript"></script>
+    <script src="~/Content/Admin/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <script src="~/Content/Admin/js/owl.carousel.js"></script>
+    <script src="~/Content/Admin/js/jquery.customSelect.min.js"></script>
+    <script src="~/Content/Admin/js/respond.min.js"></script>
+    <script class="include" type="text/javascript" src="~/Content/Admin/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="~/Content/Admin/assets/jquery-knob/js/jquery.knob.js"></script>
+    <script src="~/Content/Admin/js/common-scripts.js"></script>
+    <script type="text/javascript" language="javascript" src="~/Content/Adminassets/advanced-datatable/media/js/jquery.dataTables.js"></script>
+    <script src="~/Content/Admin/js/sparkline-chart.js"></script>
+    <script src="~/Content/Admin/js/easy-pie-chart.js"></script>
+    <script src="~/Content/Admin/js/count.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#example').dataTable({
+                "aaSorting": [[4, "desc"]]
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        /* Formating function for row details */
+        function fnFormatDetails(oTable, nTr) {
+            var aData = oTable.fnGetData(nTr);
+            var sOut = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">';
+            sOut += '<tr><td>Rendering engine:</td><td>' + aData[1] + ' ' + aData[4] + '</td></tr>';
+            sOut += '<tr><td>Link to source:</td><td>Could provide a link here</td></tr>';
+            sOut += '<tr><td>Extra info:</td><td>And any further details here (images etc)</td></tr>';
+            sOut += '</table>';
+
+            return sOut;
+        }
+
+        $(document).ready(function () {
+            /*
+             * Insert a 'details' column to the table
+             */
+            var nCloneTh = document.createElement('th');
+            var nCloneTd = document.createElement('td');
+            nCloneTd.innerHTML = '<img src="../Content/Admin/assets/advanced-datatable/examples/examples_support/details_open.png">';
+            nCloneTd.className = "center";
+
+            $('#hidden-table-info thead tr').each(function () {
+                this.insertBefore(nCloneTh, this.childNodes[0]);
+            });
+
+            $('#hidden-table-info tbody tr').each(function () {
+                this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+            });
+
+            /*
+             * Initialse DataTables, with no sorting on the 'details' column
+             */
+            var oTable = $('#hidden-table-info').dataTable({
+                "aoColumnDefs": [
+                    { "bSortable": false, "aTargets": [0] }
+                ],
+                "aaSorting": [[1, 'asc']]
+            });
+
+            /* Add event listener for opening and closing details
+             * Note that the indicator for showing which row is open is not controlled by DataTables,
+             * rather it is done here
+             */
+            $('#hidden-table-info tbody td img').live('click', function () {
+                var nTr = $(this).parents('tr')[0];
+                if (oTable.fnIsOpen(nTr)) {
+                    /* This row is already open - close it */
+                    this.src = "../Content/Admin/assets/advanced-datatable/examples/examples_support/details_open.png";
+                    oTable.fnClose(nTr);
+                }
+                else {
+                    /* Open this row */
+                    this.src = "../Content/Admin/assets/advanced-datatable/examples/examples_support/details_close.png";
+                    oTable.fnOpen(nTr, fnFormatDetails(oTable, nTr), 'details');
+                }
+            });
+        });
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true
+
+            });
+        });
+
+        $(function () {
+            $('select.styled').customSelect();
+        });
+    </script>
+    <script>
+
+        $(".knob").knob();
+
+    </script>
+</body>
+</html>

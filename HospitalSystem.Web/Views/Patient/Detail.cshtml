@@ -1,0 +1,43 @@
+﻿@model HospitalSystem.Entities.Models.Patient
+@{
+    ViewBag.Title = "Hasta İletişim Bilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="container" class="">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            @ViewBag.Title || <a href="~/Patient/Index" class="btn btn-primary">Hasta Listesi</a> || <a href="~/Patient/Delete/@Model.Id" class="btn btn-danger">Hastayı Sil</a>
+                        </header>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Eyalet/Bölge</th>
+                                    <th>Şehir</th>
+                                    <th>Ülke</th>
+                                    <th>Mail Adresi</th>
+                                    <th>Telefon No</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>@Model.PatientInformation.Province</td>
+                                    <td>@Model.PatientInformation.City</td>
+                                    <td>@Model.PatientInformation.Country</td>
+                                    <td>@Model.PatientInformation.EMail</td>
+                                    <td>@Model.PatientInformation.PhoneNumber</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

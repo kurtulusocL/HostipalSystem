@@ -1,0 +1,147 @@
+﻿@model HospitalSystem.Entities.Models.Nurse
+@{
+    ViewBag.Title = "Yeni Hemşire Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="container" class="">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            @ViewBag.Title
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal tasi-form" id="signupForm" method="post" action="" enctype="multipart/form-data">
+                                    @using (Html.BeginForm("Create", "Nurse", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <h4><label class="label label-primary">Hemşirenin Bölümü</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Bölüm Listesi: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.DepartmanId, new SelectList(ViewBag.Departmans, "Id", "Name", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.DepartmanId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Hemşire Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Adı-Soyadı</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NameSurname" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Kimlik Numarası</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="IdentityNo" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Doğum Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Birthdate" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Cinsiyeti: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.GenderId, new SelectList(ViewBag.Genders, "Id", "Name", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.GenderId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Resim</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="image" type="file" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Başlama Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Hiredate" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Hemşire İletişim Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Eyalet/Bölge</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseInformation.Province" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Şehir</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseInformation.City" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Ülke</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseInformation.Country" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Mail Adresi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseInformation.EMail" type="email" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Telefon No</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseInformation.PhoneNumber" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Ev Telefon No</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseInformation.HomeNumber" type="text" required />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Doktor Lisans Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Üniversite Adı</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseDegree.Universirt" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Lisans Derecesi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseDegree.Degree" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Mezuniyet Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NurseDegree.Date" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button class="btn btn-primary" type="submit">Hemşireyi Ekle</button>
+                                                <a href="~/Nurse/Index"><button class="btn btn-danger" type="button">İptal Et</button></a>
+                                            </div>
+                                        </div>
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

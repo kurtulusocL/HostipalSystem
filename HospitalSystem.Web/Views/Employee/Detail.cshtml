@@ -1,0 +1,45 @@
+﻿@model HospitalSystem.Entities.Models.Employee
+@{
+    ViewBag.Title = "Çalışan İletşim Bilgisi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="container" class="">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            @ViewBag.Title || <a href="~/Employee/Index" class="btn btn-primary">Çalışan Listesi</a> || <a href="~/Employee/Delete/@Model.Id" class="btn btn-danger">Doktoru Sil</a>
+                        </header>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Eyalet/Bölge</th>
+                                    <th>Şehir</th>
+                                    <th>Ülke</th>
+                                    <th>Mail Adresi</th>
+                                    <th>Telefon No</th>
+                                    <th>Ev Telefon No</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>@Model.EmployeeInformation.Province</td>
+                                    <td>@Model.EmployeeInformation.City</td>
+                                    <td>@Model.EmployeeInformation.Country</td>
+                                    <td>@Model.EmployeeInformation.EMail</td>
+                                    <td>@Model.EmployeeInformation.PhoneNumber</td>
+                                    <td>@Model.EmployeeInformation.HomeNumber</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

@@ -1,0 +1,174 @@
+﻿@model HospitalSystem.Entities.Models.Doctor
+@{
+    ViewBag.Title = "Doktor Bilgisini Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="container" class="">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            @ViewBag.Title
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal tasi-form" id="signupForm" method="post" action="" enctype="multipart/form-data">
+                                    @using (Html.BeginForm("Create", "Doctor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <h4><label class="label label-primary">Doktor Oda Bilgisi</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Kat Listesi: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.FloorId, new SelectList(ViewBag.Floors, "Id", "FloorNumber", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.FloorId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Oda Listesi: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.RoomId, new SelectList(ViewBag.Rooms, "Id", "RoomNumber", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.RoomId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Doktor Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Adı-Soyadı</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="NameSurname" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Kimlik Numarası</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="IdentityNo" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Doğum Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Birthdate" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Cinsiyeti: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.GenderId, new SelectList(ViewBag.Genders, "Id", "Name", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.GenderId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Resim</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="image" type="file" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Başlama Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="Hiredate" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Ünvanı: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.TitleId, new SelectList(ViewBag.Titles, "Id", "Name", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.TitleId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Bölümü: *</label>
+                                            <div class="col-lg-10">
+                                                @Html.DropDownListFor(i => i.DepartmanId, new SelectList(ViewBag.Departmans, "Id", "Name", new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(i => i.DepartmanId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Doktor İletişim Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Eyalet/Bölge</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorInformation.Province" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Şehir</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorInformation.City" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Ülke</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorInformation.Country" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Mail Adresi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorInformation.EMail" type="email" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Telefon No</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorInformation.PhoneNumber" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Ev Telefon No</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorInformation.HomeNumber" type="text" required />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <h4><label class="label label-primary">Doktor Lisans Bilgileri</label></h4>
+                                        <hr />
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Üniversite Adı</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorDegree.Universirt" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Lisans Derecesi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorDegree.Degree" type="text" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Mezuniyet Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="DoctorDegree.Date" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-2">Güncelleme Tarihi</label>
+                                            <div class="col-lg-10">
+                                                <input class=" form-control" id="firstname" name="UpdatedDate" type="datetime" required />
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <button class="btn btn-primary" type="submit">Doktoru Güncelle</button>
+                                                <a href="~/Doctor/Index"><button class="btn btn-danger" type="button">İptal Et</button></a>
+                                            </div>
+                                        </div>
+                                    }
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

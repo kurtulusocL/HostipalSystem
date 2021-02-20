@@ -1,0 +1,39 @@
+﻿@model HospitalSystem.Entities.Models.Nurse
+@{
+    ViewBag.Title = "Hemşire Lisans Bilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="container" class="">
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            @ViewBag.Title || <a href="~/Nurse/Index" class="btn btn-primary">Hemşire Listesi</a> || <a href="~/Nurse/Delete/@Model.Id" class="btn btn-danger">Hemşireyi Sil</a>
+                        </header>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Üniversite Adı</th>
+                                    <th>Bitirme Derecesi</th>
+                                    <th>Mezuniyet Tarihi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>@Model.NurseDegree.University</td>
+                                    <td>@Model.NurseDegree.Degree</td>
+                                    <td>@Model.NurseDegree.Date.ToShortDateString()</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>

@@ -1,0 +1,66 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<HospitalSystem.Entities.Models.Appointment>
+@{
+    ViewBag.Title = "Hasta Randevu Onay Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        @ViewBag.Title || <a href="~/Appointment/Create" class="btn btn-primary btn-xs">Yeni Radevu Ekle</a>  || <a href="~/Appointment/Create" class="btn btn-warning btn-xs">Randevu Onay Listesi</a>
+                    </header>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <table class="display table table-bordered table-striped" id="example">
+                                <thead>
+                                    <tr>
+                                        <th>Randevu Tarihi - Randevu Saati</th>
+                                        <th>Bölüm Adı - Doktor Adı</th>
+                                        <th>Hasta Sayısı</th>
+                                        <th>Eklenme Tarihi</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="gradeX">
+                                            <td>@item.Date - @item.Time</td>
+                                            <td>@item.Departman.Name - @item.Doctor.NameSurname</td>
+                                            <td>@item.Patients.Count()</td>
+                                            <td>@item.CreatedDate.ToShortDateString()</td>                                           
+                                            <td>
+                                                <a href="~/Appointment/AppointmentConfirm/@item.Id" class="btn btn-success btn-xs">Onayla</a>
+                                                <a href="~/Appointment/Delete/@item.Id" class="btn btn-danger btn-xs">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Randevu Tarihi - Randevu Saati</th>
+                                        <th>Bölüm Adı - Doktor Adı</th>
+                                        <th>Hasta Sayısı</th>
+                                        <th>Eklenme Tarihi</th>
+                                        <th>Güncellenme Tarihi</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <div class="pagination">
+                                <div class="paginate_active">
+                                    @Html.PagedListPager(Model, Page => Url.Action("AppointmentConfirmList", new { Page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>
